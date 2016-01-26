@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <HealthKit/HealthKit.h>
 #import "MBProgressHUD.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController (){
     
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) HKHealthStore *store;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel *timeLable;
+@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 
 @property (nonatomic, strong) NSDate *lastDate;
 @end
@@ -32,11 +34,79 @@
     // Do any additional setup after loading the view, typically from a nib.
 
     self.textField.keyboardType = UIKeyboardTypeNumberPad;
-    
+    [self stayBackInBackGround];
     
     [self getPermissions];
 
 }
+
+
+- (void)stayBackInBackGround{
+    
+    dispatch_queue_t dispatchQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    dispatch_async(dispatchQueue, ^(void) {
+        
+        NSError *audioSessionError = nil;
+        
+        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+        
+        if ([audioSession setCategory:AVAudioSessionCategoryPlayback error:&audioSessionError]){
+            
+            NSLog(@"Successfully set the audio session.");
+            
+        } else {
+            
+            NSLog(@"Could not set the audio session");
+            
+        }
+        
+        
+        
+        
+        
+        NSBundle *mainBundle = [NSBundle mainBundle];
+        
+        NSString *filePath = [mainBundle pathForResource:@"Heartbeats" ofType:@"mp3"];
+        
+        NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+        
+        NSError *error = nil;
+        
+        
+        
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithData:fileData error:&error];
+        
+        
+        
+        if (self.audioPlayer != nil){
+            
+            self.audioPlayer.delegate = self;
+            
+            
+            
+            [self.audioPlayer setNumberOfLoops:-1];
+            
+            if ([self.audioPlayer prepareToPlay] && [self.audioPlayer play]){
+                
+                NSLog(@"Successfully started playing...");
+                
+            } else {
+                
+                NSLog(@"Failed to play.");
+                
+            }
+            
+        } else {
+            
+            
+            
+        }
+        
+    });
+}
+
+
 - (IBAction)run:(id)sender {
     
     if (self.textField.text.length == 0){

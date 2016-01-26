@@ -10,16 +10,33 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    
+    self.locationManager.delegate = self;
+    
     // Override point for customization after application launch.
     return YES;
 }
 
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    
+    NSLog(@"位置改变，必须做点儿事情才能刷新后台时间");
+    CLLocation *loc = [locations lastObject];
+
+    float latitudeMe = loc.coordinate.latitude;
+    float longitudeMe = loc.coordinate.longitude;
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -48,7 +65,7 @@
             }
         });
     });
-
+    [self.locationManager startUpdatingLocation];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

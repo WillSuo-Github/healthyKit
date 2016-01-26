@@ -19,6 +19,7 @@
 		543454721C570B18006DC21D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 543454711C570B18006DC21D /* MBProgressHUD.m */; };
 		543454791C571EFC006DC21D /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 543454771C571EFC006DC21D /* 37x-Checkmark.png */; };
 		5434547A1C571EFC006DC21D /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 543454781C571EFC006DC21D /* 37x-Checkmark@2x.png */; };
+		5434547C1C57678F006DC21D /* Heartbeats.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5434547B1C57678F006DC21D /* Heartbeats.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		543454711C570B18006DC21D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		543454771C571EFC006DC21D /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		543454781C571EFC006DC21D /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		5434547B1C57678F006DC21D /* Heartbeats.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Heartbeats.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		543454391C56FFF6006DC21D /* healthyKit */ = {
 			isa = PBXGroup;
 			children = (
+				5434547B1C57678F006DC21D /* Heartbeats.mp3 */,
 				5434546F1C5708D7006DC21D /* healthyKit.entitlements */,
 				543454771C571EFC006DC21D /* 37x-Checkmark.png */,
 				543454781C571EFC006DC21D /* 37x-Checkmark@2x.png */,
@@ -269,6 +272,7 @@
 				543454791C571EFC006DC21D /* 37x-Checkmark.png in Resources */,
 				5434544A1C56FFF6006DC21D /* LaunchScreen.storyboard in Resources */,
 				543454471C56FFF6006DC21D /* Assets.xcassets in Resources */,
+				5434547C1C57678F006DC21D /* Heartbeats.mp3 in Resources */,
 				5434547A1C571EFC006DC21D /* 37x-Checkmark@2x.png in Resources */,
 				543454451C56FFF6006DC21D /* Main.storyboard in Resources */,
 			);
